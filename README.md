@@ -43,12 +43,13 @@ Please make sure the following MATLAB toolboxes are installed:
 - Epoch EEG data around relevant event markers.
 
 ### 3. Labeling Epochs
-- **Script**: `scripts/label_epochs.m`
+- **Script**: `scripts/labeling.m`
 - Assign labels to each trial based on conditions or event types.
 
 ### 4. Preprocessing
+- **Script**: `scripts/preprocessing_function.m`
+- Perform filtering.
 - **Script**: `scripts/preprocessing.m`
-- Perform filtering, baseline correction, artifact rejection, ICA, etc.
 
 ### 5. Grand Averaging
 - **Script**: `scripts/grand_averaging.m`
