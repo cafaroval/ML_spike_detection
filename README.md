@@ -79,11 +79,4 @@ Please make sure the following MATLAB toolboxes are installed:
 - **Script**: `scripts/feature_extraction.m`
 - Extract features such as mean amplitude, band power, or latency for classification.
 
----
-
-## 🚀 Getting Started
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/thesis-pipeline-matlab.git
 
