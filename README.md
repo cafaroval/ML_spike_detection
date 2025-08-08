@@ -24,8 +24,7 @@ This repository contains a full EEG analysis pipeline in MATLAB, developed for a
 Please make sure the following MATLAB toolboxes are installed:
 
 - Signal Processing Toolbox
-- EEGLAB Toolbox
-- FieldTrip or Brainstorm
+- FieldTrip Toolbox
 - Deep Learning Toolbox
 - Statistics and Machine Learning Toolbox
 
@@ -35,7 +34,9 @@ Please make sure the following MATLAB toolboxes are installed:
 
 ### 1. Loading EEG Data
 - **Script**: `scripts/load_data.m`
-- Load raw EEG files (e.g., `.set`, `.mat`) using EEGLAB or custom format readers.
+- Load raw EEG files using custom format readers.
+- **Script**: `scripts/spike_times.m`
+- Load spike times files which was marked by three epileptologists using custom format readers.
 
 ### 2. Creating Epochs
 - **Script**: `scripts/create_epochs.m`
