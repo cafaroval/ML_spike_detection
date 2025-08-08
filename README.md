@@ -1,4 +1,4 @@
-# 🧠 EEG-ANN Thesis Pipeline (MATLAB)
+# 🧠 Spike detection using ML - Thesis Pipeline
 
 This repository contains a full EEG analysis pipeline in MATLAB, developed for a thesis project. The pipeline includes raw EEG processing, source localization, feature extraction, and classification using an Artificial Neural Network (ANN).
 
@@ -12,11 +12,10 @@ This repository contains a full EEG analysis pipeline in MATLAB, developed for a
 4. Preprocessing
 5. Grand Averaging
 6. MRI Preprocessing
-7. Selecting ROIs / Nodes
+7. Selecting Nodes
 8. Source Waveform Projection
-9. ANN Function
-10. ANN Training
-11. Feature Extraction
+9. ANN Training
+10. Feature Extraction
 
 ---
 
