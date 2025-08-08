@@ -19,5 +19,69 @@ This repository contains a full EEG analysis pipeline in MATLAB, developed for a
 
 ---
 
-## 🗂️ Folder Structure
+## ⚙️ Requirements
+
+Please make sure the following MATLAB toolboxes are installed:
+
+- Signal Processing Toolbox
+- EEGLAB Toolbox
+- FieldTrip or Brainstorm
+- Deep Learning Toolbox
+- Statistics and Machine Learning Toolbox
+
+---
+
+## 🔧 Step-by-Step Pipeline
+
+### 1. Loading EEG Data
+- **Script**: `scripts/load_data.m`
+- Load raw EEG files (e.g., `.set`, `.mat`) using EEGLAB or custom format readers.
+
+### 2. Creating Epochs
+- **Script**: `scripts/create_epochs.m`
+- Epoch EEG data around relevant event markers.
+
+### 3. Labeling Epochs
+- **Script**: `scripts/label_epochs.m`
+- Assign labels to each trial based on conditions or event types.
+
+### 4. Preprocessing
+- **Script**: `scripts/preprocessing.m`
+- Perform filtering, baseline correction, artifact rejection, ICA, etc.
+
+### 5. Grand Averaging
+- **Script**: `scripts/grand_averaging.m`
+- Compute average ERPs or evoked responses across subjects/conditions.
+
+### 6. MRI Preprocessing
+- **Script**: `scripts/mri_preprocessing.m`
+- Prepare structural MRI data for source localization.
+
+### 7. Selecting ROIs / Nodes
+- **Script**: `scripts/select_nodes.m`
+- Choose specific brain regions or sources for projection and analysis.
+
+### 8. Source Waveform Projection
+- **Script**: `scripts/source_projection.m`
+- Use inverse modeling to project EEG data into source space.
+
+### 9. ANN Function
+- **Script**: `functions/create_ann.m`
+- Define ANN architecture using MATLAB’s Deep Learning Toolbox.
+
+### 10. ANN Training
+- **Script**: `scripts/train_ann.m`
+- Train ANN on extracted features and save the trained model.
+
+### 11. Feature Extraction
+- **Script**: `scripts/feature_extraction.m`
+- Extract features such as mean amplitude, band power, or latency for classification.
+
+---
+
+## 🚀 Getting Started
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/thesis-pipeline-matlab.git
 
