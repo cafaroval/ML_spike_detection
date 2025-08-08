@@ -59,7 +59,7 @@ Please make sure the following MATLAB toolboxes are installed:
 - **Script**: `scripts/mri_preprocessing.m`
 - Prepare structural MRI data for source localization.
 
-### 7. Selecting ROIs / Nodes
+### 7. Selecting Nodes
 - **Script**: `scripts/select_nodes.m`
 - Choose specific brain regions or sources for projection and analysis.
 
