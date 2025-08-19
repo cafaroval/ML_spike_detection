@@ -5,15 +5,14 @@
 % 2. Computing AND / OR consensus labels across experts
 % 3. Extracting labeled EEG epochs for ANN classification
 % 
-% Output variables (examples):
-% - OrSpike_eeg, OrNonSpike_eeg, AndSpike_eeg, AndNonSpike_eeg
+% Output variables:
 % - OrSpike, OrNonSpike, AndSpike, AndNonSpike
 % 
 % Requires:
 % - epochedEEG: segmented EEG data 
 % - spikeTimesAll: struct with spike times from experts
 
-%% 1. Label Each Epoch Using Spike Times ==========
+%% 1. Label Each Epoch Using Spike Times 
 spikeLabels = struct();
 epileptologists = fieldnames(spikeTimesAll);
 
@@ -54,7 +53,7 @@ end
 disp('Total Spikes:'); disp(totalSpikeCounts);
 disp('Total No-Spikes:'); disp(totalNoSpikeCounts);
 
-%%  2. Compute AND and OR Labels ==========
+%%  2. Compute AND and OR Labels 
 ANDLabels = [];
 ORLabels = [];
 for i = 1:total_hour
@@ -69,10 +68,7 @@ end
 disp(['AND-marking Spikes: ', num2str(sum(ANDLabels == 1))]); % 1133
 disp(['OR-marking Spikes: ', num2str(sum(ORLabels == 1))]);   % 10552
 
-% save('ANDLabels.mat', 'ANDLabels');
-% save('ORLabels.mat', 'ORLabels');
-
-%% 3. Extract Epochs Based on Labels ==========
+%% 3. Extract Epochs Based on Labels 
 [OrSpike_eeg, OrNonSpike_eeg, OrSpike, OrNonSpike] = deal({});
 [AndSpike_eeg, AndNonSpike_eeg, AndSpike, AndNonSpike] = deal({});
 
