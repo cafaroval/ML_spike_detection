@@ -5,7 +5,7 @@
 %
 % Inputs:
 %   baseDir          - Base directory containing the data folders
-%   epileptologists  - Cell array of epileptologist identifiers (e.g., {'ep_1', 'ep_2'})
+%   epileptologists  - Cell array of epileptologist identifiers 
 %   totalHours       - Number of recordings per epileptologist
 %
 % Output:
@@ -15,9 +15,6 @@
 
 
 function [spikeTimesAll] = LoadAllSpikeTimes2(baseDir, epileptologists, totalHours)
-    % baseDir = '/Volumes/NEW SANDISK';
-    % epileptologists = {'ep_1', 'ep_2', 'ep_3'};
-    % totalHours = 22;
     spikeTimesAll = struct();
 
     for i = 1:length(epileptologists)
