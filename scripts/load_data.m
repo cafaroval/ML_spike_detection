@@ -12,9 +12,7 @@
 
 
 function [eegData] = LoadAllEEGData(baseDir, totalHours)
-    % baseDir = '/Volumes/NEW SANDISK';
-    % epileptologists = {'ep_1', 'ep_2', 'ep_3'};
-    % totalHours = 22;
+
     eegData = cell(1, totalHours);
     sharedPath = fullfile(baseDir, 'data_marked_by_ep_1');
     addpath(sharedPath);
