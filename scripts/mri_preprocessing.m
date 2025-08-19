@@ -1,7 +1,4 @@
-%%=========================================================================
 % EEG Forward Model Preparation Script (FieldTrip)
-% Description: From MRI to Leadfield with robust practices.
-%==========================================================================
 
 %===================== Load MRI ===========================================
 mri = ft_read_mri('T1_curry.nii'); % coordinate system scanras
@@ -11,14 +8,12 @@ cfg = [];
 cfg.method = 'interactive'; 
 cfg.coordsys = 'ctf';
 mri_realign = ft_volumerealign(cfg, mri);
-% save(fullfile(output_dir, 'mri_realign.mat'), 'mri_realign');
 
 %===================== Reslice MRI ========================================
 cfg =[];
 cfg.method = 'linear';
 cfg.coordsys = 'ctf';
 mri_resliced = ft_volumereslice([], mri_realign);
-% save(fullfile(output_dir, 'mri_resliced.mat'), 'mri_resliced');
 
 %===================== Plot Slices ========================================
 anatomy = mri_resliced.anatomy;
@@ -37,7 +32,6 @@ title(sprintf('Axial (z=%d)', z));
 cfg = [];
 cfg.output = {'brain', 'skull', 'scalp'};
 segment_mri = ft_volumesegment(cfg, mri_resliced);
-save(fullfile(output_dir, 'segment_mri.mat'), 'segment_mri');
 
 % Visualize Segmentation
 segment_mri_indexed = ft_datatype_segmentation(segment_mri, 'segmentationstyle', 'indexed');
@@ -55,7 +49,6 @@ cfg = [];
 cfg.tissue = {'brain', 'skull', 'scalp'};
 cfg.numvertices = [3000 2000 1000]; 
 mesh = ft_prepare_mesh(cfg, segment_mri);
-save(fullfile(output_dir, 'mesh.mat'), 'mesh');
 
 %----------------- Check & Flip Normals if Needed -------------------------
 for i = 1:numel(mesh)
@@ -75,7 +68,7 @@ figure; ft_plot_mesh(mesh); hold on; axis equal; camlight; lighting gouraud;
 
 %===================== Prepare Head Model =================================
 cfg = [];
-cfg.method = 'dipoli'; % Or 'bemcp'
+cfg.method = 'Openmeeg'; % Or 'dipoli'
 headmodel = ft_prepare_headmodel(cfg, mesh);
 save(fullfile(output_dir, 'headmodel.mat'), 'headmodel');
 
@@ -97,7 +90,6 @@ selected_elec.chanpos = elec.chanpos(keep,:);
 selected_elec.chantype = elec.chantype(keep,:);
 selected_elec.chanunit = elec.chanunit(keep,:);
 selected_elec.coordsys = 'ctf';
-save(fullfile(output_dir, 'selected_elec.mat'), 'selected_elec');
 
 %===================== Scalp Mesh for Realignment =========================
 cfg = [];
@@ -118,7 +110,6 @@ figure; ft_plot_headmodel(headmodel, 'facecolor','skin','edgecolor','none','face
 hold on; ft_plot_sens(elec_realigned, 'elecshape','sphere', 'facecolor','r', 'label','on');
 view([90 0]); camlight; lighting gouraud; title('Head Model with Electrodes');
 
-
 %===================== Source Model =======================================
 cfg = [];
 cfg.resolution = 2; % mm grid
@@ -127,8 +118,6 @@ cfg.unit = 'mm';
 cfg.headmodel = headmodel;
 sourcemodel = ft_prepare_sourcemodel(cfg);
 sourcemodel.coordsys = 'ctf';
-
-save sourcemodel.mat sourcemodel
 
 figure; ft_plot_headmodel(headmodel, 'facecolor','cortex','edgecolor','none','facealpha',0.5);
 hold on; ft_plot_mesh(sourcemodel.pos(sourcemodel.inside,:), 'vertexcolor','r');
@@ -145,9 +134,6 @@ cfg.elec = elec_realigned;
 cfg.headmodel = headmodel;
 cfg.reducerank = 3; % EEG
 lf = ft_prepare_leadfield(cfg);
-save leadfield.mat lf
-headmodel.coordsys = 'ctf';
-lf.cfg.coordsys = 'ctf';  % assuming `lf` is your leadfield struct
 
 % Visualize Leadfield
 figure;
